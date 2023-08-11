@@ -222,89 +222,45 @@ public:
 };
 
 int main() {
-    manager *manager_ptr = manager::make();
-    University university;
-    university.title = "Sohag";
-    manager_ptr->name = "Eng/Ahmed";
-    university.manageri = manager_ptr;
-    university.detials();
+	Faculty faculty;
+	cout << "Enter the title of the faculty: ";
+	cin >> faculty.title;
 
-    int choice;
-    while (true) {
-        cout << "Select an option:\n";
-        cout << "1. Add a faculty\n";
-        cout << "2. View all faculties\n";
-        cout << "3. Add a student\n";
-        cout << "4. Add an instructor\n";
-        cout << "5. Add an employee\n";
-        cout << "6. Add a department\n";
-        cout << "7. View faculty details\n";
-        cout << "8. Exit\n";
-        cout << "Enter your choice: ";
-        cin >> choice;
+	int choice;
+	while (true) {
+		cout << "Select an option:\n";
+		cout << "1. View faculty details\n";
+		cout << "2. Add a student\n";
+		cout << "3. Add an instructor\n";
+		cout << "4. Add an employee\n";
+		cout << "5. Add a department\n";
+		cout << "6. Exit\n";
+		cout << "Enter your choice: ";
+		cin >> choice;
 
-        switch (choice) {
-            case 1: {
-                university.addFaculty();
-                break;
-            }
-            case 2: {
-                university.detials();
-                break;
-            }
-            case 3:
-            case 4:
-            case 5:
-            case 6: {
-                cout << "Select a faculty to add to:\n";
-                for (int i = 0; i < university.faculties.size(); i++) {
-                    cout << i + 1 << ". " << university.faculties[i].title << endl;
-                }
-                int facultyChoice;
-                cout << "Enter your choice: ";
-                cin >> facultyChoice;
+		switch (choice) {
+		case 1:
+			faculty.details();
+			break;
+		case 2:
+			faculty.addStudent();
+			break;
+		case 3:
+			faculty.addInstructor();
+			break;
+		case 4:
+			faculty.addEmployee();
+			break;
+		case 5:
+			faculty.addDepartments();
+			break;
+		case 6:
+			exit(0);
+		default:
+			cout << "Invalid choice. Please try again.\n";
+			break;
+		}
+	}
 
-                switch (choice) {
-                    case 3: {
-                        university.faculties[facultyChoice - 1].addStudent();
-                        break;
-                    }
-                    case 4: {
-                        university.faculties[facultyChoice - 1].addInstructor();
-                        break;
-                    }
-                    case 5: {
-                        university.faculties[facultyChoice - 1].addEmployee();
-                        break;
-                    }
-                    case 6: {
-                        university.faculties[facultyChoice - 1].addDepartments();
-                        break;
-                    }
-                }
-                break;
-            }
-            case 7: {
-                cout << "Select a faculty to view details:\n";
-                for (int i = 0; i < university.faculties.size(); i++) {
-                    cout << i + 1 << ". " << university.faculties[i].title << endl;
-                }
-                int facultyChoice;
-                cout << "Enter your choice: ";
-                cin >> facultyChoice;
-
-                university.faculties[facultyChoice - 1].details();
-                break;
-            }
-            case 8: {
-                exit(0);
-            }
-            default: {
-                cout << "Invalid choice. Please try again.\n";
-                break;
-            }
-        }
-    }
-
-    return 0;
+	return 0;
 }
