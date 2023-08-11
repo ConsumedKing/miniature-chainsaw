@@ -13,3 +13,5 @@ Computer_Science
 Computer_Science
 Computer_Science
 Arts
+Fine_Arts
+Fine_Arts
